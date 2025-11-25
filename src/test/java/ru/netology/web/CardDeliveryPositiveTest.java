@@ -9,22 +9,23 @@ import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
-import static com.codeborne.selenide.Condition.;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static java.time.Duration.ofSeconds;
 import static com.codeborne.selenide.Condition.text;
 
 public class CardDeliveryPositiveTest {
-
+    void setUp() {
+        Selenide.open("http://localhost:9999/");
+    }
 
     @BeforeEach
-    void setUp() { Selenide.open("http://localhost:9999/");
-        private String generateDate(long addDays, String pattern) {
-            return LocalDate.now()
-                    .plusDays(addDays)
-                    .format(DateTimeFormatter.ofPattern(pattern));
-        }
+            private String generateDate(long addDays, String pattern) {
+                return LocalDate.now()
+                        .plusDays(addDays)
+                        .format(DateTimeFormatter.ofPattern(pattern));
+
     }
 
     @Test
@@ -42,5 +43,4 @@ public class CardDeliveryPositiveTest {
                 .should(Condition.visible, Duration.ofSeconds(15));
                 .should(Condition.text("Встреча успешно забронирована на " + planningDate));
     }
-}
-
+    }
