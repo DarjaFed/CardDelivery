@@ -51,7 +51,7 @@ public class CardDeliveryNegativeTest {
 
     //Город не в юрисдикции РФ
     @Test
-    public void CityInvalid() {
+    public void cityInvalid() {
         $("[data-test-id=city] input").setValue("Марокко");
         String planningDate = generateDate(3, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -69,7 +69,7 @@ public class CardDeliveryNegativeTest {
 
     // буквы вместо телефона
     @Test
-    public void PhoneNumberLetters() {
+    public void phoneNumberLetters() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -88,11 +88,11 @@ public class CardDeliveryNegativeTest {
 
     // Пустое поле Дата встречи
     @Test
-    public void DateClean() {
+    public void dateClean() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(3, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
-                .doubleClick().sendKeys(Keys.BACK_SPACE);
+                .sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.BACK_SPACE);
         $("[data-test-id='name'] input").setValue("Иван Иванов");
         $("[data-test-id='phone'] input").setValue("+79111111111");
         $("[data-test-id='agreement']").click();
@@ -103,7 +103,7 @@ public class CardDeliveryNegativeTest {
                 .shouldHave(exactText("Неверно введена дата"));
     }
     @Test
-            public void InvalidDate() {
+            public void invalidDate() {
     $("[data-test-id=city] input").setValue("Москва");
     String planningDate = generateDate(3462, "dd.MM.yyyy");
     $("[data-test-id='date'] input")
@@ -121,7 +121,7 @@ public class CardDeliveryNegativeTest {
 
     // Имя английскими буквами
     @Test
-    public void InvalidName() {
+    public void invalidName() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -139,7 +139,7 @@ public class CardDeliveryNegativeTest {
 
     // Имя спецсимволами
     @Test
-    public void SimbolsName() {
+    public void simbolsName() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -157,7 +157,7 @@ public class CardDeliveryNegativeTest {
 
     // Пустое поле телефона
     @Test
-    public void CleanPhone() {
+    public void cleanPhone() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -175,7 +175,7 @@ public class CardDeliveryNegativeTest {
 
     //Телефон без +
     @Test
-    public void InvalidePhone() {
+    public void invalidePhone() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
@@ -193,7 +193,7 @@ public class CardDeliveryNegativeTest {
 
     //Без галочки согласия на обработку
     @Test
-    public void CheckboxOff() {
+    public void checkboxOff() {
         $("[data-test-id=city] input").setValue("Москва");
         String planningDate = generateDate(4, "dd.MM.yyyy");
         $("[data-test-id='date'] input")
