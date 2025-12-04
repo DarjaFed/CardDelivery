@@ -98,14 +98,18 @@ public class CardDeliveryNegativeTest {
         $("[data-test-id='agreement']").click();
         $("button.button").click();
         $(".notification__content");
-        $("[data-test-id='date'].input_invalid .input__sub")
+        $("[data-test-id='date'] .input__sub").shouldBe(visible)
                 .should(Condition.visible, Duration.ofSeconds(15))
                 .shouldHave(exactText("Неверно введена дата"));
+
+
+
+
     }
     @Test
             public void invalidDate() {
     $("[data-test-id=city] input").setValue("Москва");
-    String planningDate = generateDate(3462, "dd.MM.yyyy");
+    String planningDate = generateDate(33462, "dd.MM.yyyy");
     $("[data-test-id='date'] input")
             .press(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE)
             .setValue(planningDate);
@@ -114,9 +118,9 @@ public class CardDeliveryNegativeTest {
     $("[data-test-id='agreement']").click();
     $("button.button").click();
     $(".notification__content");
-    $("[data-test-id='date'].input_invalid .input__sub")
-            .should(Condition.visible, Duration.ofSeconds(15))
-            .shouldHave(exactText("Неверно введена дата"));
+    $("[data-test-id='date'] .input__sub").shouldBe(visible)
+                .should(Condition.visible, Duration.ofSeconds(15))
+                .shouldHave(exactText("Неверно введена дата"));
     }
 
     // Имя английскими буквами
@@ -206,6 +210,6 @@ public class CardDeliveryNegativeTest {
         $(".notification__content");
         $("[data-test-id='agreement'].input_invalid .input__sub")
                 .should(Condition.visible, Duration.ofSeconds(15))
-                .shouldHave(Condition.exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных"));
+                .shouldHave(Condition.exactText("Требуется согласие с условиями обработки и использованием моих персональных данных"));
     }
 }
